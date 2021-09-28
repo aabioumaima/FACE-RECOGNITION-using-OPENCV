@@ -30,11 +30,15 @@ faceLocTestDua = face_recognition.face_locations(imgDua)[0]
 encodeDuaTest = face_recognition.face_encodings(imgDua)[0]
 cv2.rectangle(imgDua,(faceLocTestDua[3],faceLocTestDua[0]),(faceLocTestDua[1],faceLocTestDua[2]),(255,0,255),2)
 
+#Comparison between the two faces, and calculate the distance:
+
 results = face_recognition.compare_faces([encodeAri], encodeAriTest)
 faceDis = face_recognition.face_distance([encodeAri], encodeAriTest)
 
+
 results2 = face_recognition.compare_faces([encodeAri], encodeDuaTest)
 faceDis2 = face_recognition.face_distance([encodeAri], encodeDuaTest)
+
 print(results2, faceDis2)
 cv2.putText(imgDua, f'{results2} {round(faceDis2[0],2)}',(50,50),cv2.FONT_HERSHEY_COMPLEX,1,(0,0,255),2)
 
